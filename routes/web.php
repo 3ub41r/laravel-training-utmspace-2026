@@ -21,9 +21,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::get('/get-semesters', [IntakeController::class, 'getSemesters']);
     Route::get('/home', [IntakeController::class, 'tinjauanAkademik'])->name('tinjauan-akademik');
     Route::get('/kemasukan-pelajar', [IntakeController::class, 'kemasukanPelajar'])->name('kemasukan-pelajar');
-// });
+});
