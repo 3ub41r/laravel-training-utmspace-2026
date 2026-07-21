@@ -98,27 +98,24 @@ return [
             'sslmode' => 'prefer',
         ],
 
-'sqlsrv' => [
-    'driver' => 'sqlsrv',
-    'host' => env('DB_SQL_HOST', 'localhost'),
-    'port' => env('DB_SQL_PORT', '1433'),
-    'database' => env('DB_SQL_DATABASE', 'forge'),
-    'username' => env('DB_SQL_USERNAME', 'forge'),
-    'password' => env('DB_SQL_PASSWORD', ''),
-    'charset' => 'utf8',
-    'prefix' => '',
-    'encrypt' => env('DB_SQL_ENCRYPTION', 'no'),
-    'trust_server_certificate' => env('DB_SQL_TRUST_CERT', 'yes'),
-    'options' => [
-        PDO::SQLSRV_ATTR_ENCODING => PDO::SQLSRV_ENCODING_UTF8,
-        // Paksa TDS version
-        'TDS_Version' => '7.1',
-        PDO::ATTR_TIMEOUT => 5,
-    ],
-],
-
-
-
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'host' => env('MSSQL_DB_HOST', 'localhost'),
+            'port' => env('MSSQL_DB_PORT', '1433'),
+            'database' => env('MSSQL_DB_DATABASE', 'forge'),
+            'username' => env('MSSQL_DB_USERNAME', 'forge'),
+            'password' => env('MSSQL_DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'encrypt' => env('MSSQL_DB_ENCRYPTION', 'no'),
+            'trust_server_certificate' => env('MSSQL_DB_TRUST_CERT', 'yes'),
+            'options' => [
+                PDO::SQLSRV_ATTR_ENCODING => PDO::SQLSRV_ENCODING_UTF8,
+                // Paksa TDS version
+                'TDS_Version' => '7.1',
+                PDO::ATTR_TIMEOUT => 5,
+            ],
+        ],
 
         'mysql_intake' => [
             'driver' => 'mysql',

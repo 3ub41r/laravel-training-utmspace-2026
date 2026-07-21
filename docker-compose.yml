@@ -6,6 +6,7 @@ services:
     container_name: dashboard-app
     volumes:
       - ./:/var/www/html
+      - /var/www/html/vendor
     working_dir: /var/www/html
     expose:
       - "9000"
@@ -35,26 +36,26 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: dashboard
     ports:
-      - "3306:3306"
+      - "33061:3306"
     volumes:
       - db_data:/var/lib/mysql
     networks:
       - dashboard-net
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: dashboard-phpmyadmin
-    restart: unless-stopped
-    environment:
-      PMA_HOST: dashboard-mysql
-      PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "8081:80"
-    depends_on:
-      - dashboard-mysql
-    networks:
-      - dashboard-net
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   container_name: dashboard-phpmyadmin
+  #   restart: unless-stopped
+  #   environment:
+  #     PMA_HOST: dashboard-mysql
+  #     PMA_PORT: 3306
+  #     MYSQL_ROOT_PASSWORD: root
+  #   ports:
+  #     - "8081:80"
+  #   depends_on:
+  #     - dashboard-mysql
+  #   networks:
+  #     - dashboard-net
 
 networks:
   dashboard-net:
