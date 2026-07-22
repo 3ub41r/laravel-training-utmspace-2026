@@ -4,6 +4,7 @@ WORKDIR /app
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-scripts --optimize-autoloader --ignore-platform-reqs
 
+# Stage 2: Build the final image
 FROM php:8.4-fpm-bookworm
 
 ENV ACCEPT_EULA=Y
@@ -48,6 +49,7 @@ RUN chmod uga+x /usr/bin/install-php-extensions \
     && sync \
     && install-php-extensions bcmath ds exif gd intl opcache pcntl pdo_sqlsrv redis sqlsrv zip
 
+# Configure OpenSSL to allow TLSv1 connections and lower the security level to 0.
 RUN <<EOF cat >> /etc/ssl/openssl.cnf
 [openssl_init]
 ssl_conf = ssl_configuration
