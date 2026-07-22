@@ -107,14 +107,11 @@ return [
             'password' => env('MSSQL_DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
-            'encrypt' => env('MSSQL_DB_ENCRYPTION', 'no'),
+            'encrypt' => env('MSSQL_DB_ENCRYPTION', 'optional'),
             'trust_server_certificate' => env('MSSQL_DB_TRUST_CERT', 'yes'),
-            'options' => [
+            'options' => extension_loaded('pdo_sqlsrv') ? [
                 PDO::SQLSRV_ATTR_ENCODING => PDO::SQLSRV_ENCODING_UTF8,
-                // Paksa TDS version
-                'TDS_Version' => '7.1',
-                PDO::ATTR_TIMEOUT => 5,
-            ],
+            ] : [],
         ],
 
         'mysql_intake' => [
