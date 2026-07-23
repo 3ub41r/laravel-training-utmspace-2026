@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     container_name: dashboard-app
+    user: www-data:www-data
     volumes:
       - ./:/var/www/html
       - /var/www/html/vendor
