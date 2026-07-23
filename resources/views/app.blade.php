@@ -408,7 +408,7 @@
                 </button>
                 <div class="dropdown-menu" id="dropdown-menu">
 
-                    <a href="#" class="dropdown-item">
+                    <a href="{{ route('change-password') }}" class="dropdown-item">
                         Change Password
                     </a>
 
