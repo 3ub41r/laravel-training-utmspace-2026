@@ -68,3 +68,9 @@ WORKDIR /var/www/html
 COPY . .
 # Copy the pre-built vendor directory from Stage 1
 COPY --from=vendor_builder /app/vendor ./vendor
+
+# Set ownership to www-data:www-data for container access
+RUN chown -R www-data:www-data /var/www/html
+
+# Set folder permissions to 775 (you may want to adjust this for your app's needs)
+RUN chmod -R 775 /var/www/html
