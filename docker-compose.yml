@@ -51,7 +51,7 @@ services:
       PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "8081:80"
+      - "8082:80"
     depends_on:
       - dashboard-mysql
     networks:
